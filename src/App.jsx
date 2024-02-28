@@ -66,10 +66,6 @@ function App() {
         <AlertDiv errms={errorm} closer={closeErr} />
       ) : null}
 
-      {/* <Routes>
-        <Route path="/home" element={<Home city={city} data={wdata}/>} />
-      </Routes> */}
-
     </div>
   );
 }
