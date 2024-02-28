@@ -1,11 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
+import {useLocation} from "react-router-dom"
 
 
 export default function Home(props){
-    console.log(props.data);
+    const Location = useLocation();
+    const [wdata, setWdata] = useState(null);
+    const [city, setCity] = useState(null);
+
+    if(Location.state!==null && wdata===null){
+        setWdata(Location.state.data);
+        setCity(Location.state.city)
+    }
+
+    // console.log(Location);
+    console.log({wdata});
     return(
         <>
-            <h1>{props.city}</h1>
+            <h1>{city ? city : "No Data"}</h1>
+            {/* <p>{wdata ? wdata : "No json available"}</p> */}
         </>
     )
 }

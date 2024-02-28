@@ -6,7 +6,7 @@ import AlertDiv from "./components/AlertDiv";
 function App() {
   const [city, setCity] = useState("");
   const [errorm, setErrorm] = useState(null);
-  const [wdata, setWdata] = useState(null);
+  
   const Navigate = useNavigate();
   const API_URL = `http://api.weatherapi.com/v1/current.json?key=66f30495523b4ddbb25173823242702&q=${city}&aqi=no`;
 
@@ -17,8 +17,8 @@ function App() {
         throw new Error('Failed to fetch data');
       }
       const data = await response.json();
-      console.log(data);
-      setWdata(data);
+      // console.log(data);
+      Navigate("/home",{state:{data:data , city:city}})
     
     } catch (error) {
       setErrorm("Location not Found");
@@ -37,8 +37,6 @@ function App() {
     if (event.key === "Enter") {
       getwetDeets();
       setCity("");
-      Navigate("/home");
-      
     }
   }
 
